@@ -44,6 +44,12 @@ axios.get(url)
             case 'json':
                 json(data, program.filePath);
                 break;
+            case 'java-enum':
+                javaEnum(data, program.filePath);
+                break;
+            case 'java-properties':
+                javaProperties(data, program.filePath);
+                break;
             default:
                 throw "Formatter not supported";
         }
@@ -76,6 +82,52 @@ function typescriptEnum(response: any, path: string) {
         console.log(chalk.green("The file was saved (" + path + ")!"));
     });
 }
+
+function javaEnum(response: any, path: string) {
+    var keysFileContent = 'package io.wildlabs.phrases.infrastructure.config; \n\npublic enum I18nKey {\n';
+
+    response.translationKeys.forEach(function (translationKey: any) {
+        var identifier = translationKey.key.toUpperCase();
+        const regEx = new RegExp('\\.', "g");
+        identifier = '  ' + identifier.replace(regEx, '_');
+        keysFileContent += identifier + ',\n';
+    });
+
+    keysFileContent += "}";
+
+    fs.writeFile(path, keysFileContent, function (err: any) {
+        if (err) {
+            return console.log(chalk.red(err));
+        }
+
+        console.log(chalk.green("The file was saved (" + path + ")!"));
+    });
+}
+
+function javaProperties(response: any, path: string) {
+    response.languages.forEach(function (language: any) {
+        var languageFileContent = '';
+
+        language.translationEntries.forEach(function (translationEntry: any, key: any) {
+            languageFileContent += translationEntry.key + '=' + translationEntry.value + '\n';
+            if (key < language.translationEntries.length - 1) {
+                languageFileContent += ',';
+            }
+
+            languageFileContent += '\n'
+        });
+
+        fs.writeFile(path + '/messages_' + language.languageCode.replace('-', '_') + '.properties', languageFileContent, function (err: any) {
+            if (err) {
+                return console.log(err);
+            }
+        });
+
+
+        console.log("The file was saved!");
+    });
+}
+
 
 function json(response: any, path: string) {
     response.languages.forEach(function (language: any) {
