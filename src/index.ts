@@ -16,6 +16,7 @@ console.log(
 program
     .version('0.0.1')
     .description("An example CLI for ordering pizza's")
+    .requiredOption('-a, --accessToken <accessToken>', 'Your accessToken')
     .requiredOption('-t, --tenant <tenant>', 'Your tenant')
     .requiredOption('-p, --projectId <projectId>', 'Your projectId')
     .requiredOption('-pl, --platformId <platformId>', 'Your platformId')
@@ -34,7 +35,11 @@ let url = encodeURI(
 
 console.log(chalk.blue('Endpoint: ' + url));
 
-axios.get(url)
+axios.get(url, {
+    headers: {
+        'Access-Token': program.accessToken
+    }
+})
     .then((response: any) => {
         var data = response.data;
         switch (program.fileFormat) {
@@ -110,11 +115,6 @@ function javaProperties(response: any, path: string) {
 
         language.translationEntries.forEach(function (translationEntry: any, key: any) {
             languageFileContent += translationEntry.key + '=' + translationEntry.value + '\n';
-            if (key < language.translationEntries.length - 1) {
-                languageFileContent += ',';
-            }
-
-            languageFileContent += '\n'
         });
 
         fs.writeFile(path + '/messages_' + language.languageCode.replace('-', '_') + '.properties', languageFileContent, function (err: any) {
