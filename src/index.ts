@@ -117,7 +117,7 @@ function javaProperties(response: any, path: string) {
             languageFileContent += translationEntry.key + '=' + translationEntry.value + '\n';
         });
 
-        fs.writeFile(path + '/messages_' + language.languageCode.replace('-', '_') + '.properties', languageFileContent, function (err: any) {
+        fs.writeFile(path + '/messages_' + language.locale.languageTag.replace('-', '_') + '.properties', languageFileContent, function (err: any) {
             if (err) {
                 return console.log(err);
             }
@@ -144,7 +144,7 @@ function json(response: any, path: string) {
 
         languageFileContent += '}'
 
-        fs.writeFile(path + '/' + language.languageCode + '.json', languageFileContent, function (err: any) {
+        fs.writeFile(path + '/' + language.locale.languageTag + '.json', languageFileContent, function (err: any) {
             if (err) {
                 return console.log(err);
             }
