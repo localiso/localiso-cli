@@ -49,8 +49,14 @@ axios.get(url, {
             case 'json':
                 json(data, program.filePath);
                 break;
+            case 'dart-json':
+                dartJson(data, program.filePath);
+                break;
             case 'java-enum':
                 javaEnum(data, program.filePath);
+                break;
+            case 'dart-enum':
+                dartEnum(data, program.filePath);
                 break;
             case 'java-properties':
                 javaProperties(data, program.filePath);
@@ -75,6 +81,27 @@ function typescriptEnum(response: any, path: string) {
         const regEx = new RegExp('\\.', "g");
         identifier = identifier.replace(regEx, '_');
         keysFileContent += '    static ' + identifier + ' = \'' + translationKey.key + '\'\n';
+    });
+
+    keysFileContent += "}";
+
+    fs.writeFile(path, keysFileContent, function (err: any) {
+        if (err) {
+            return console.log(chalk.red(err));
+        }
+
+        console.log(chalk.green("The file was saved (" + path + ")!"));
+    });
+}
+
+function dartEnum(response: any, path: string) {
+    var keysFileContent = 'class I18n {\n';
+
+    response.translationKeys.forEach(function (translationKey: any) {
+        var identifier = translationKey.key.toUpperCase();
+        const regEx = new RegExp('\\.', "g");
+        identifier = identifier.replace(regEx, '_');
+        keysFileContent += '    static final String ' + identifier + ' = \'' + translationKey.key + '\';\n';
     });
 
     keysFileContent += "}";
@@ -143,6 +170,33 @@ function json(response: any, path: string) {
         });
 
         languageFileContent += '}'
+
+        fs.writeFile(path + '/' + language.locale.languageTag + '.json', languageFileContent, function (err: any) {
+            if (err) {
+                return console.log(err);
+            }
+        });
+
+
+        console.log("The file was saved!");
+    });
+}
+
+function dartJson(response: any, path: string) {
+    response.languages.forEach(function (language: any) {
+        var languageFileContent = '[\n';
+
+        language.translationEntries.forEach(function (translationEntry: any, key: any) {
+            languageFileContent += '{"key" : "' + translationEntry.key + '",\n  "value" : "' + translationEntry.value + '"}';
+
+            if (key < language.translationEntries.length - 1) {
+                languageFileContent += ',';
+            }
+
+            languageFileContent += '\n'
+        });
+
+        languageFileContent += ']'
 
         fs.writeFile(path + '/' + language.locale.languageTag + '.json', languageFileContent, function (err: any) {
             if (err) {
