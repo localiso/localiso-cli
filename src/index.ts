@@ -101,7 +101,7 @@ function dartEnum(response: any, path: string) {
         var identifier = translationKey.key.toUpperCase();
         const regEx = new RegExp('\\.', "g");
         identifier = identifier.replace(regEx, '_');
-        keysFileContent += '    static final String ' + identifier + ' = \'' + translationKey.key + '\';\n';
+        keysFileContent += '    static const String ' + identifier + ' = \'' + translationKey.key + '\';\n';
     });
 
     keysFileContent += "}";
