@@ -9,13 +9,13 @@ const fs = require('fs');
 
 console.log(
     chalk.blue(
-        figlet.textSync('phrases-generator', {horizontalLayout: 'full'})
+        figlet.textSync('localiso-cli', {horizontalLayout: 'full'})
     )
 );
 
 program
     .version('0.0.1')
-    .description("An example CLI for ordering pizza's")
+    .description("The localiso cli lets you manage your translation files from the command line.")
     .requiredOption('-a, --accessToken <accessToken>', 'Your accessToken')
     .requiredOption('-t, --tenant <tenant>', 'Your tenant')
     .requiredOption('-p, --projectId <projectId>', 'Your projectId')
@@ -24,7 +24,7 @@ program
     .requiredOption('-fp, --filePath <format>', 'Your filePath')
     .parse(process.argv);
 
-const publicApiEndpoint = 'http://{tenant}.phrases.wildlabs.io/pub-api/translations/{projectId}?platformIds[]={platformId}'
+const publicApiEndpoint = 'http://{tenant}.localiso.co/pub-api/translations/{projectId}?platformIds[]={platformId}'
 
 let url = encodeURI(
     publicApiEndpoint

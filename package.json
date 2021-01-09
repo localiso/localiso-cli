@@ -1,16 +1,16 @@
 {
-  "name": "phrases-generator",
+  "name": "localiso-cli",
   "version": "0.0.1",
-  "description": "Phrases generator",
+  "description": "Localiso CLI",
   "main": "./lib/index.js",
   "bin": {
-    "phrases-generator": "./lib/index.js"
+    "localiso-cli": "./lib/index.js"
   },
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "create": "npm run build && npm run test",
     "build": "tsc -p .",
-    "test": "sudo npm i -g && phrases-generator",
+    "test": "sudo npm i -g && localiso-cli",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
   },
   "author": "Pascal Wild",

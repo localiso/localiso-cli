@@ -1,1 +1,1 @@
-# phrases-generator
+# Localiso CLI
