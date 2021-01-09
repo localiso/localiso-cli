@@ -4,6 +4,7 @@
 Localiso CLI
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Build Status](https://travis-ci.org/localiso/localiso-cli.svg?branch=master)](https://travis-ci.org/localiso/localiso-cli)
 [![Version](https://img.shields.io/npm/v/@localiso/localiso-cli.svg)](https://npmjs.org/package/@localiso/localiso-cli)
 [![Codecov](https://codecov.io/gh/localiso/localiso-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/localiso/localiso-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/@localiso/localiso-cli.svg)](https://npmjs.org/package/@localiso/localiso-cli)

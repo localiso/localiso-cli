@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7db983ab-4364-46f9-8d56-b2ba4b612014" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/commands/hello.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/commands/sync.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/commands/sync.test.ts" afterDir="false" />
-    </list>
+    <list default="true" id="7db983ab-4364-46f9-8d56-b2ba4b612014" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,8 +88,16 @@
       <option name="presentableId" value="Default" />
       <updated>1610197011991</updated>
       <workItem from="1610197013239" duration="4509000" />
-      <workItem from="1610201626183" duration="963000" />
+      <workItem from="1610201626183" duration="1265000" />
     </task>
+    <task id="LOCAL-00001" summary="Removes tests">
+      <created>1610202668568</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610202668568</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +114,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Removes tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removes tests" />
   </component>
   <component name="WindowStateProjectService">
     <state x="955" y="335" key="#com.intellij.ide.util.MemberChooser" timestamp="1610198829391">
