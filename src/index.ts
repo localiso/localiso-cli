@@ -9,7 +9,7 @@ const fs = require('fs');
 
 console.log(
     chalk.blue(
-        figlet.textSync('localiso-cli', {horizontalLayout: 'full'})
+        figlet.textSync('localiso-cli (Yeah!)', {horizontalLayout: 'full'})
     )
 );
 

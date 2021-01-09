@@ -1,6 +1,6 @@
 {
-  "name": "localiso-cli",
-  "version": "0.0.1",
+  "name": "@localiso/localiso-cli",
+  "version": "0.0.5",
   "description": "Localiso CLI",
   "main": "./lib/index.js",
   "bin": {
@@ -16,7 +16,7 @@
   "author": "Pascal Wild",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chalk": "^4.1.0",
     "clear": "^0.1.0",
     "commander": "^5.1.0",
